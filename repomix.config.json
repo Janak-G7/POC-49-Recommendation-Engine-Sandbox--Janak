@@ -1,0 +1,25 @@
+{
+  "output": {
+    "filePath": "repomix-output.xml",
+    "style": "xml"
+  },
+  "ignore": {
+    "useGitignore": true,
+    "useDefaultPatterns": true,
+    "customPatterns": [
+      "node_modules/**",
+      ".next/**",
+      "out/**",
+      "venv/**",
+      ".venv/**",
+      "__pycache__/**",
+      "*.pyc",
+      "*.pyo",
+      "package-lock.json",
+      "*.tsbuildinfo",
+      ".DS_Store",
+      "repomix-output.xml",
+      "repomix-output.txt"
+    ]
+  }
+}
