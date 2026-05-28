@@ -36,6 +36,6 @@ Thumbs.db
 *.swp
 *.swo
 
-# ── Repomix ────────────────────────────────────────────────
-repomix-output.xml
+# ── Repomix ──────────────────────────────────────────────── 
+repomix-output.xml 
 repomix-output.txt
