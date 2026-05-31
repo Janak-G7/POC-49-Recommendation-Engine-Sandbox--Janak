@@ -108,9 +108,9 @@ export async function fetchRecommendations(
   return safeFetch(url, fallback);
 }
 
-export async function fetchScoreDistribution(weights: Weights, forceMock = false): Promise<{ items: Item[] }> {
-  if (forceMock) return { items: mockItems(weights) };
-  return safeFetch(`${API}/api/score-distribution?${wq(weights)}`, () => ({ items: mockItems(weights) }));
+export async function fetchScoreDistribution(weights: Weights, forceMock = false, category = "All"): Promise<{ items: Item[] }> {
+  if (forceMock) return { items: mockItems(weights, category) };
+  return safeFetch(`${API}/api/score-distribution?${wq(weights)}&category=${encodeURIComponent(category)}`, () => ({ items: mockItems(weights, category) }));
 }
 
 export interface OutcomesResponse {
@@ -120,7 +120,7 @@ export interface OutcomesResponse {
   quality_exposure_correlation: number;
 }
 
-export async function fetchOutcomes(weights: Weights, forceMock = false): Promise<OutcomesResponse> {
+export async function fetchOutcomes(weights: Weights, forceMock = false, category = "All"): Promise<OutcomesResponse> {
   const fallback = (): OutcomesResponse => {
     const items = mockItems(weights);
     const catExp: Record<string, number> = {}, catQ: Record<string, number> = {};
@@ -138,7 +138,7 @@ export async function fetchOutcomes(weights: Weights, forceMock = false): Promis
     };
   };
   if (forceMock) return fallback();
-  return safeFetch(`${API}/api/outcomes?${wq(weights)}`, fallback);
+  return safeFetch(`${API}/api/outcomes?${wq(weights)}&category=${encodeURIComponent(category)}`, fallback);
 }
 
 export async function fetchScenarios(): Promise<{ scenarios: Scenario[] }> {

@@ -356,8 +356,11 @@ def get_recommendations(
 def get_score_distribution(
     w_quality: float = 0.5, w_popularity: float = 0.3,
     w_recency: float = 0.2, w_diversity: float = 0.2, w_engagement: float = 0.4,
+    category: str = "All",
 ):
     df = compute_scores(w_quality, w_popularity, w_recency, w_diversity, w_engagement)
+    if category != "All":
+        df = df[df["category"] == category]
     return {
         "items": df[["id","title","category","quality_score","base_popularity",
                      "composite_score","rank","signal_breakdown","source"]].to_dict(orient="records")
@@ -368,6 +371,7 @@ def get_score_distribution(
 def get_outcomes(
     w_quality: float = 0.5, w_popularity: float = 0.3,
     w_recency: float = 0.2, w_diversity: float = 0.2, w_engagement: float = 0.4,
+    category: str = "All",
 ):
     df = compute_scores(w_quality, w_popularity, w_recency, w_diversity, w_engagement)
     inv_rank = 1.0 / df["rank"]
@@ -375,6 +379,8 @@ def get_outcomes(
     cat_exposure = df.groupby("category")["exposure"].sum().round(2).to_dict()
     cat_quality  = df.groupby("category")["quality_score"].mean().round(3).to_dict()
     corr = float(df["quality_score"].corr(df["exposure"]))
+    if category != "All":
+        df = df[df["category"] == category]
     return {
         "scatter":                      df[["id","title","category","quality_score","exposure","rank"]].to_dict(orient="records"),
         "category_exposure":            cat_exposure,

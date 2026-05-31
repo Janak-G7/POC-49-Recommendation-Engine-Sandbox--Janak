@@ -43,7 +43,7 @@ export default function Sidebar({ avgScore, avgQuality, topCategory, category, o
           Recommendation Engine Sandbox
         </div>
         <div style={{ fontSize: 10, color: "#64748B", marginBottom: 10 }}>
-          PoC #49 · Distribution & Demand Rail
+         Distribution & Demand Rail
         </div>
         <div style={{ display: "flex", gap: 8, marginBottom: 8 }}>
           <StatPill label="Avg Score">

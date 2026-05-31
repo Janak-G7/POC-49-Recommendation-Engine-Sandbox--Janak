@@ -41,12 +41,6 @@ export default function Home() {
         background: "#0B1117", borderBottom: "1px solid #1F2937",
         padding: "10px 20px", display: "flex", alignItems: "center", gap: 10, flexShrink: 0,
       }}>
-        <span style={{
-          background: "rgba(56,189,248,0.12)", color: "#38BDF8",
-          fontSize: 9, fontWeight: 700, letterSpacing: "0.1em",
-          padding: "2px 8px", borderRadius: 4,
-          border: "0.5px solid rgba(56,189,248,0.3)", textTransform: "uppercase",
-        }}>PoC 49</span>
 
         <span style={{ fontSize: 14, fontWeight: 700, letterSpacing: "-0.02em" }}>
           Recommendation Engine Sandbox

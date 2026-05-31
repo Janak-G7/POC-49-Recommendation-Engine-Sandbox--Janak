@@ -62,15 +62,15 @@ export function useRecommendations(dataMode: "synthetic" | "live" = "synthetic")
 
   const loadAll = useCallback(async () => {
     if (isLive) return;
-    const d = await fetchScoreDistribution(weights, false);
+    const d = await fetchScoreDistribution(weights, false, category);
     setAllItems(d.items);
-  }, [weights, isLive]);
+  }, [weights, isLive, category]);
 
   const loadOutcomes = useCallback(async () => {
     if (isLive) return;
-    const d = await fetchOutcomes(weights, false);
+    const d = await fetchOutcomes(weights, false, category);
     setOutcomes(d);
-  }, [weights, isLive]);
+  }, [weights, isLive, category]);
 
   const loadFeedback = useCallback(async () => {
     if (isLive) {
